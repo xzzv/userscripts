@@ -21,7 +21,7 @@
         return;
     var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome')>=0;
     var isOpera = navigator.userAgent.toLowerCase().indexOf('opera')>=0;
-    var isSafari = navigator.userAgent.toLowerCase().indexOf('safari')>=0;
+    var isSafari = !isChrome && navigator.userAgent.toLowerCase().indexOf('safari')>=0;
     if(isChrome) {
         var script = document.createElement('script');
         script.setAttribute('type','text/javascript');
@@ -42,6 +42,7 @@
             return;
         var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome')>=0;
         var isOpera = navigator.userAgent.toLowerCase().indexOf('opera')>=0;
+        var isSafari = !isChrome && navigator.userAgent.toLowerCase().indexOf('safari')>=0;
         var padChatNotificationSenders = [];
         var padChatNotificationLines = [];
         var padChatNotification = null;
