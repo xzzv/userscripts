@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Etherpad Notifications
 // @description    Chat notifications for Etherpad-based services
-// @version        0.6
+// @version        0.7 dev
 // @grant          none
 // @include        http://piratenpad.de/*
 // @include        http://*.piratenpad.de/*
@@ -193,15 +193,14 @@
             //var notifications = window.Notification ? window.Notification : window.webkitNotifications ? window.webkitNotifications : null;
             var notifications = window.webkitNotifications ? window.webkitNotifications : window.Notification ? window.Notification : null;
             if(notifications) {
-                var newState = !notificationsOn;
-                if(!isPermissionGranted()) {
-                    notifications.requestPermission(updateNotificationsCaption);
-                    newState = true;            
-                }
                 if(isPermissionGranted()) {
-                    notificationsOn = newState;
-                    window.localStorage.setItem('NotificationsOn', notificationsOn);
+                    notificationsOn = !notificationsOn;
                 }
+                else {
+                    notificationsOn = true;
+                    notifications.requestPermission(updateNotificationsCaption);
+                }
+                window.localStorage.setItem('NotificationsOn', notificationsOn);
             }
             else
                 window.alert('Your browser does not support desktop notifications.');
