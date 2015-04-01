@@ -133,7 +133,8 @@
                     textLines.push(padChatNotificationSenders[i]+': '+padChatNotificationLines[i]);
                 if(isSafari)
                     textLines.reverse();
-                showNotification('http://'+window.location.host+'/favicon.ico', padChatNotificationSenders.length+' new message'+(padChatNotificationSenders.length>1?'s':''), textLines);
+				var title = window.paddocbar.title+' – '+padChatNotificationSenders.length+' new message'+(padChatNotificationSenders.length>1?'s':'');
+                showNotification('http://'+window.location.host+'/favicon.ico', title, textLines);
                 if(notificationsSoundOn && notificationsSoundSource) {
                     if(!audio) {
                         audio = document.createElement('audio');
