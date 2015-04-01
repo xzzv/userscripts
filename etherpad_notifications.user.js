@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Etherpad Notifications
 // @description    Chat notifications for Etherpad-based services
-// @version        0.7 dev
+// @version        0.7
 // @grant          none
 // @include        http://piratenpad.de/*
 // @include        http://*.piratenpad.de/*
@@ -58,7 +58,7 @@
         var notificationsTimeout = parseInt(window.localStorage.getItem('NotificationsTimeout') || 0);
         var notificationsLinesLimit = parseInt(window.localStorage.getItem('NotificationsLinesLimit') || 3);
         var debugMode = false;
-        var debugVersion = '0.6';
+        var debugVersion = '0.7';
         
         var oldReceiveChat = window.padchat.receiveChat;
         window.padchat.receiveChat = receiveChat;
@@ -100,7 +100,7 @@
                     setTimeout(function(notification) {return function() {notification.cancel();}}(padChatNotification), notificationsTimeout);
             }
             else if(window.Notification) {
-                var newPadChatNotification = new Notification(title, {iconUrl: iconUrl, body: textLines.join(separator), tag: replaceId});
+                var newPadChatNotification = new Notification(title, {icon: iconUrl, iconUrl: iconUrl, body: textLines.join(separator), tag: replaceId});
                 newPadChatNotification.onclick = function() {
                     padChatNotificationSenders = [];
                     padChatNotificationLines = [];
