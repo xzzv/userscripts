@@ -38,8 +38,9 @@
     else
         ExecuteScript();
     function ExecuteScript() {
-        if(!window.padchat || !window.$ || !$('#padpage #padmain').length)
+        if(!window.padchat || !window.$ || !$('#padpage #padmain').length || window.desktopNotificationsPlugin) {
             return;
+		}
         var isChrome = navigator.userAgent.toLowerCase().indexOf('chrome')>=0;
         var isOpera = navigator.userAgent.toLowerCase().indexOf('opera')>=0;
         var isSafari = !isChrome && navigator.userAgent.toLowerCase().indexOf('safari')>=0;
