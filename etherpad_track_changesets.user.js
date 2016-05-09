@@ -131,7 +131,7 @@
                     }
                 });
                 var attribString = '(' + attribStrings.join(', ') + ')';
-                if (attribString && !(op.opcode == '+' && attribString == '(*)') && !(op.opcode != '+' && attribString == '()')) {
+                if (attribString && attribString != '()') {
                     logLine.append(attribString, 'background: white; color: gray;', 'color: black;');
                 }
                 if (isFirstOp) {
